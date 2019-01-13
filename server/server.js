@@ -18,13 +18,13 @@ mongoose
 //
 // ─── ROUTES ─────────────────────────────────────────────────────────────────────
 //
-app.get('/', (req, res) => {
+app.get('/api/hi', (req, res) => {
   res.send("Hello World");
 });
 
 //
 // ─── RUN SERVER ─────────────────────────────────────────────────────────────────
 //
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 3001;
 
 app.listen(port, () => console.log(`server running on port ${port}`));
