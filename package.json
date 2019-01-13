@@ -11,6 +11,8 @@
   },
   "devDependencies": {},
   "scripts": {
+    "build:client": "cd client && npm run build",
+    "build": "npm run build:client && npm run server",
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon server/server.js",
     "client": "npm run start --prefix client",   
