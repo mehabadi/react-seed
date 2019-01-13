@@ -15,9 +15,9 @@
     "build": "npm run build:client && npm run server",
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon server/server.js",
-    "client": "npm run start --prefix client",   
+    "client": "npm run start --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "npm install && npm run build"
   },
   "repository": {
     "type": "git",
