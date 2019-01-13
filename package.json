@@ -14,9 +14,10 @@
     "@types/mongoose": "^5.3.3"
   },
   "scripts": {    
-    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon server/server.js",
     "client": "npm run start --prefix client",    
+    "start": "npm run server",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
