@@ -11,13 +11,12 @@
   },
   "devDependencies": {},
   "scripts": {
-    "build:client": "cd client && npm install && npm run build",
-    "build": "npm run build:client && npm run server",
+    "build": "cd client && npm install",    
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon server/server.js",
     "client": "npm run start --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "npm install && npm run build:client"
+    "heroku-postbuild": "npm install && npm run build"
   },
   "repository": {
     "type": "git",
