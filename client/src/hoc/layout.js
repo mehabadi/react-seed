@@ -121,7 +121,7 @@ class AdminLayout extends Component{
                         drawerWidth={DRAWERWIDTH}                       
                     />
                     <Drawer
-                        variant="permanent"
+                        variant="persistent"
                         classes={
                             {
                                 paper: classNames(classes.drawerPaper, !this.state.open && classes.drawerPaperClose),
