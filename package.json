@@ -17,7 +17,7 @@
     "server": "nodemon server/server.js",
     "client": "npm run start --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "npm install && npm run build"
+    "heroku-postbuild": "npm install && npm run build:client"
   },
   "repository": {
     "type": "git",
