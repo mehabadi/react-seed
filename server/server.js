@@ -1,7 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const app = express();
+const helmet = require('helmet');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const path = require('path');
+const client = path.join(__dirname, '../client/build');
+const app = express();
+
+// #region Configs
+app.use(helmet());
+app.use(cors());
+mongoose.Promise = global.Promise;
 
 // DB Config
 const db = require('./config/keys').mongoURI;
@@ -16,8 +26,16 @@ mongoose
     console.log('MongoDB Not Connected');
 });
 
+app.use(bodyParser.urlencoded({ extended: true }));            // parse application/x-www-form-urlencoded
+app.use(bodyParser.json());                                     // parse application/json
+app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
+app.use(cookieParser());
+// #endregion
+
+// #region Routes
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../client/build')));
+// #homepage
+app.use('/', express.static(client));
 
 //
 // ─── ROUTES ─────────────────────────────────────────────────────────────────────
@@ -25,12 +43,12 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 app.get('/api/hi', (req, res) => {
   res.send("Hello World");
 });
-
+// #endregion
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/../client/build/index.html'));
+  res.sendFile(path.resolve(client, 'index.html'));
 });
 
 //
